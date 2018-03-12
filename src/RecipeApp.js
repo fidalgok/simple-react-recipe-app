@@ -38,7 +38,8 @@ class App extends Component {
           img: "https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a",
         }
       ],
-      nextRecipeId:3,
+      nextRecipeId: 3,
+      showForm: false,
     }
 
     this.handleSave = this.handleSave.bind(this);
@@ -57,11 +58,16 @@ class App extends Component {
   });
   }
   render() {
-    
+    const {showForm} = this.state;
     return (
       <div className="App">
-        <Navbar />
-        <RecipeInput onSave={this.handleSave}/>
+        <Navbar onNewRecipe = {() => this.setState({showForm: true})}/>
+        { showForm ? 
+          <RecipeInput 
+            onSave={this.handleSave}
+            onClose={() => this.setState({showForm: false})}
+          /> : 
+          null }
         <RecipeList recipes={this.state.recipes}/>
         
       </div>
