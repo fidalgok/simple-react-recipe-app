@@ -2,7 +2,10 @@ import React from 'react';
 import './RecipeInput.css';
 
 class RecipeInput extends React.Component {
-  static defaultProps = { onClose: {} }
+  static defaultProps = { 
+    onClose() {},
+    onSave(){}, 
+  }
   constructor(props) {
     super(props);
     this.state = {
@@ -14,12 +17,22 @@ class RecipeInput extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleNewIngredient = this.handleNewIngredient.bind(this);
     this.handleChangeIng = this.handleChangeIng.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
-  handleSubmit() { }
+  handleSubmit(e) { 
+    e.preventDefault();
+    this.props.onSave({...this.state});
+    this.setState({
+      title: '',
+      instructions: '',
+      ingredients: [''],
+      img: '',
+    });
+  }
 
   handleChangeIng(e) {
     const index = Number(e.target.name.split('-')[1]);
@@ -59,7 +72,7 @@ class RecipeInput extends React.Component {
 
     return (
       <div className="recipe-form-container">
-        <form className="recipe-form" onSubmit={() => { }}>
+        <form className="recipe-form" onSubmit={this.handleSubmit}>
           <button
             type="button"
             className="close-button"
