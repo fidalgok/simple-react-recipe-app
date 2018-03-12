@@ -1,0 +1,35 @@
+.recipe-form-container {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.recipe-form {
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  padding:15px 0;
+}
+
+.recipe-form-line {
+  margin:15px 0;
+}
+
+.recipe-form-line label {
+  margin-right: 10px;
+}
+
+.recipe-form textarea {
+  align-self:stretch;
+}
+.close-button {
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border:none;
+  cursor: pointer;
+  overflow: hidden;
+  font-size: 0.9em;
+  color:#777;
+  text-shadow: 0 1px 0 #fff;
+  align-self:flex-end;
+}
