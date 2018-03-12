@@ -54,6 +54,7 @@ class App extends Component {
       return {
         nextRecipeId: prevState.nextRecipeId + 1,
         recipes: recipes,
+        showForm: false,
       }
   });
   }
