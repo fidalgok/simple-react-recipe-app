@@ -12,6 +12,7 @@
 
 .recipe-card-content{
     padding:16px;
+    flex-grow:1;
 }
 
 .recipe-card-image {
@@ -29,4 +30,10 @@
 
 .recipe-card-title {
     margin: 0;
+}
+
+.recipe-card-button {
+    align-self: flex-end;
+    
+
 }

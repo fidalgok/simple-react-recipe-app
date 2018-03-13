@@ -2,9 +2,13 @@ import React, {Component} from 'react';
 import './Recipe.css'
 
 class Recipe extends Component{
+    
+
+    
+
     render(){
         //common to destructure objects and arrays passed to props
-        const {img, title, instructions} = this.props;
+        const {id, img, title, instructions, onDelete} = this.props;
         const ingredients = this.props.ingredients.map((ing, i) => {
             return <li key={i}> {ing}</li>
         });
@@ -24,7 +28,12 @@ class Recipe extends Component{
                         <p>{instructions}</p>
                     </div>
 
-
+                    <button 
+                        className="recipe-card-button"
+                        onClick={()=>onDelete(id)}
+                        >
+                            Delete
+                        </button>
                 </div>
             
             

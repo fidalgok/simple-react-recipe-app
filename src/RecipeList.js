@@ -11,11 +11,14 @@ class RecipeList extends Component{
     }
     
     render(){
+        const {onDelete} = this.props;
         const recipes = this.props.recipes.map((recipe, i) => (
             <Recipe key={recipe.id} title={recipe.title}
                 ingredients={recipe.ingredients}
                 img={recipe.img}
                 instructions={recipe.instructions}
+                onDelete={onDelete}
+                id={recipe.id}
             /> //could use the rest operator here to shorten this up
             //just be careful if you use this <Recipe key={i} {...recipe}/>
         ));

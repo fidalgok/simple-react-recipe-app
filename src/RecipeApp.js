@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Recipe from './Recipe';
 import Navbar from './Navbar';
 import RecipeList from './RecipeList';
 import RecipeInput from './RecipeInput';
@@ -43,6 +42,7 @@ class App extends Component {
     }
 
     this.handleSave = this.handleSave.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
   
   handleSave(recipe){
@@ -56,8 +56,20 @@ class App extends Component {
         recipes: recipes,
         showForm: false,
       }
-  });
+    });
+
+  
   }
+
+  handleDelete(id) {
+    
+    const recipes = this.state.recipes.filter((recipe)=>(
+      recipe.id !== id
+    ));
+    this.setState({recipes});
+    return;
+  }
+
   render() {
     const {showForm} = this.state;
     return (
@@ -69,7 +81,10 @@ class App extends Component {
             onClose={() => this.setState({showForm: false})}
           /> : 
           null }
-        <RecipeList recipes={this.state.recipes}/>
+        <RecipeList 
+          recipes={this.state.recipes}
+          onDelete={this.handleDelete}
+          />
         
       </div>
     );
